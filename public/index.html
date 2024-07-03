@@ -1,0 +1,68 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <form action="" id="userForm">
+            <div>
+                <input type="text" placeholder="hcdId" id="hcpId">
+                <br> <br>
+            </div>
+            <div>
+                <input type="text" placeholder="scenarioId" id="sId">
+                <br> <br>
+            </div>
+            <div>
+                <input type="text" placeholder="marketCode" id="mrCode">
+                <br> <br>
+            </div>
+            <div>
+                <input type="text" placeholder="brandName" id="bName">
+                <br> <br>
+            </div>
+            <div>
+                <input type="submit" name="Submit" id="submit">
+            </div>
+            <br>
+            <div id="response"></div>
+        </form>
+        <script>
+            document.getElementById('userForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const hcpId = document.getElementById('hcpId').value;
+                const sId = document.getElementById('sId').value;
+                const mrCode = document.getElementById('mrCode').value;
+                const bName = document.getElementById('bName').value;
+
+                const formData = {
+                    hcpId: hcpId,
+                    scenarioId: sId,
+                    marketCode: mrCode,
+                    brandName: bName
+                }
+
+                console.log('Data sent successfully');
+                console.log('Sent Data is ', formData);
+
+                const url = 'https://r7xy19uipg.execute-api.eu-west-1.amazonaws.com/dev';
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                            'Content-Type':'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json)
+                .then(data => 
+                    {
+                        document.getElementById('response').innerHTML = 
+                        `<h3> API Response</h3>
+                        <pre>${JSON.stringify(data,null,2)}</pre>`;
+                    }
+                )
+                
+                
+            });
+        </script>
+    </body>
+</html>
