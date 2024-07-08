@@ -119,6 +119,26 @@ exports.execute = function (req, res) {
     //       .then(message => console.log(message.sid)) 
     //       .done();
 
+    const formData = {
+        hcpId: hcpId,
+        marketCode: marketCode,
+        scenarioId: scenarioId,
+        brandName: brandName
+    }
+
+    const url = 'https://r7xy19uipg.execute-api.eu-west-1.amazonaws.com/dev';
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json)
+    .then(data => console.log(data))
+
+    // error handling and store the response within marketing cloud
+
 
 
 
