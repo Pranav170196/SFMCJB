@@ -32,9 +32,9 @@
         }
     },
     "configurationArguments": {
-      "applicationExtensionKey": "e962d1d4-8b07-4e76-89be-ecd1f1423b6d",
+      "applicationExtensionKey": "e83089ed-8936-4100-8473-125c712c9592",
        "save": {
-           "url": "",
+           "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/save",
             "verb": "POST",
             "body": "",
             "format": "json",
@@ -42,7 +42,7 @@
             "timeout": 2000
        },
        "publish": {
-           "url": "",
+           "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/publish",
             "verb": "POST",
             "body": "",
             "format": "json",
@@ -50,7 +50,7 @@
             "timeout": 2000
        },
        "validate": {
-           "url": "",
+           "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/validate",
             "verb": "POST",
             "body": "",
             "format": "json",
@@ -58,7 +58,7 @@
             "timeout": 2000
        },
        "stop": {
-           "url": "",
+           "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/stop",
             "verb": "POST",
             "body": "",
             "format": "json",
