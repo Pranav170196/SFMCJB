@@ -9,18 +9,13 @@
        "en-US": {
            "name": "Suggestion API",
            "description": "Send Suggestion API with Journey Builder",
-           "TwilioMessage":"test"
+           "SuggestionMessage":"test"
        }
     },
     "arguments": {
         "execute": {
             "inArguments": [
-                {
-                  "marketCode": "{{Contact.Default.marketCode}}",
-                  "hcpId": "{{Contact.Default.hcpId}}",
-                  "brandName": "{{Contact.Default.brandName}}",
-                  "scenarioId": "{{Contact.Default.scenarioId}}" 
-                }               
+                               
             ],
             "outArguments": [],
             "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/execute",
