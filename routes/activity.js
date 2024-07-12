@@ -86,17 +86,7 @@ exports.save = function (req, res) {
 /*
  * POST Handler for /execute/ route of Activity.
  */
-// exports.execute = function(req, res) {
-//     console.log("5 -- For Execute");	
-//     console.log("4");	
-//     console.log("3");	
-//     console.log("2");	
-//     console.log("1");	
-//     console.log('execute function called');
-//     console.log('Request body value : ', req.body);
-//     logData(req);
-//     res.send(200, 'Execute');
-// }
+
 
 exports.execute = function (req, res) {
 
@@ -109,22 +99,7 @@ exports.execute = function (req, res) {
     
     // var requestBody = req.body.inArguments[0];
     
-// st
-// messageBody = hcpId
-// messagingService = scenarioId
-// accountSID = marketCode
-// authToken = brandName
-// end
-    // const marketCode = requestBody.marketCode;
-    // const brandName = requestBody.brandName;
-    // // const to = requestBody.to;
-    // const scenarioId = requestBody.scenarioId;
-    // const hcpId = requestBody.hcpId;
-    const marketCode = '123';
-    const brandName = '345';
-    // const to = requestBody.to;
-    const scenarioId = '3r2';
-    const hcpId = 'djhj';
+    
 
 
     // const client = require('twilio')(accountSid, authToken); 
@@ -138,125 +113,16 @@ exports.execute = function (req, res) {
     //       .then(message => console.log(message.sid)) 
     //       .done();
 
-    const formData = {
-        hcpId: hcpId,
-        marketCode: marketCode,
-        scenarioId: scenarioId,
-        brandName: brandName,
-    }
+    
 
-    console.log('form data value is ', JSON.stringify(formData));
-    // let result;
-
-    const result = setTimeout(() => {
-        apiCall(formData)
-    },2000);
-
-    // const url = 'https://r7xy19uipg.execute-api.eu-west-1.amazonaws.com/dev';
-    // fetch(url, {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type':'application/json'
-    //     },
-    //     body: JSON.stringify(formData)
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //     console.log('API Called Successfully: ', data);
-    //     result = data;
-    // });
+    
 
     // error handling and store the response within marketing cloud
 
 
-    // const clientId = '1jwrskb8tqp4wn2y5eiebh6g';
-    // const clientSecret = '4xYx8fpQxO4dLSa6TXBPtccF';
-    // const baseUrl = 'https://mcxk3jwz79lcp1qf21j7hmh18z3m.auth.marketingcloudapis.com/v2/token';
-
-    // const authData = {
-    //     "grant_type": 'client_credentials',
-    //     "client_id": clientId,
-    //     "client_secret": clientSecret,
-    //     "account_id": '536005973'
-    // }
-
-    // fetch('baseUrl', {
-    //     method: post,
-    //     headers: {
-    //         'Content-Type':'application/json'
-    //     },
-    //     body: JSON.stringify()
-    // })
-
-    // const externalKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
-
-    // const authUrl = "https://mcxk3jwz79lcp1qf21j7hmh18z3m.auth.marketingcloudapis.com/v2/token";
-    // const apiUrl = `https://mcxk3jwz79lcp1qf21j7hmh18z3m.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${externalKey}/rows/`
-
-    // const myHeaders = new Headers();
-    // myHeaders.append("Content-Type", "application/json");
-
-    // const raw = JSON.stringify({
-    // "grant_type": "client_credentials",
-    // "client_id": "1jwrskb8tqp4wn2y5eiebh6g",
-    // "client_secret": "4xYx8fpQxO4dLSa6TXBPtccF",
-    // "account_id": "536005973"
-    // });
-
-    // const requestOptions = {
-    //     method: "POST",
-    //     headers: myHeaders,
-    //     body: raw,
-    //     redirect: "follow"
-    // };
-
-    // const apiRequestOptions = {
-    //     method: "POST",
-    //     headers: myHeaders,
-    //     body: result.stringify()
-    // }
-
-    // fetch(authUrl, requestOptions)
-    // .then((response) => response.json())
-    // .then((result) => {
-    //     fetch(apiUrl, {
-    //         method: post,
-    //         headers: {
-    //             'Authorization': result.authToken,
-    //             'Content-Type':'application/json'
-    //         },
-    //         body: formData.stringify(),
-    //         redirect: "follow"
-    //     })
-    //     console.log('info added to DE successfully');
-    // })
-    // .catch((error) => console.error(error));
-
-
-
-
-
-
-
-    
-
-
-
-    // {
-    //     "hcpId": "123jdj",
-    //    "scenarioId": "qwe",
-    //    "marketCode": "hhd",
-    //    "brandName": "anfknf"
-    // }
-
-
-
-
-
-
     // FOR TESTING
     logData(req);
-    res.send(200, 'Publish');
+    res.send(200, 'Execute');
 
     // Used to decode JWT
     // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
@@ -281,24 +147,6 @@ exports.execute = function (req, res) {
     // });
 };
 
-async function apiCall(formData) {
-    let result;
-
-    const url = 'https://r7xy19uipg.execute-api.eu-west-1.amazonaws.com/dev';
-    await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type':'application/json'
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('API Called Successfully: ', data);
-        result = data;
-    });
-    return result;
-}
 
 
 /*
