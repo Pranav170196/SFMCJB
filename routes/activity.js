@@ -106,7 +106,7 @@ exports.execute = function (req, res) {
     const brandName = requestBody.brandName;
     // const to = requestBody.to;
     const scenarioId = requestBody.scenarioId;
-    const hcpId = requestBody.body;
+    const hcpId = requestBody.hcpId;
 
 
     // const client = require('twilio')(accountSid, authToken); 

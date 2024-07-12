@@ -17,7 +17,7 @@
             "inArguments": [
                 {
                     "marketCode": "",
-                    "body": "{{Contact.Default.hcpId}}",
+                    "hcpId": "{{Contact.Default.hcpId}}",
                     "brandName": "",
                     "scenarioId": ""
                   }          
