@@ -15,12 +15,7 @@
     "arguments": {
         "execute": {
             "inArguments": [
-                {
-                    "marketCode": "",
-                    "hcpId": "{{Contact.Default.hcpId}}",
-                    "brandName": "",
-                    "scenarioId": ""
-                  }          
+                               
             ],
             "outArguments": [],
             "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/execute",
