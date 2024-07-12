@@ -124,7 +124,7 @@ exports.execute = function (req, res) {
         hcpId: hcpId,
         marketCode: marketCode,
         scenarioId: scenarioId,
-        brandName: brandName
+        brandName: brandName,
     }
 
     console.log('form data value is ', JSON.stringify(formData));
