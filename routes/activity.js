@@ -86,14 +86,19 @@ exports.save = function (req, res) {
 /*
  * POST Handler for /execute/ route of Activity.
  */
-exports.execute = function(req, res) {
-    console.log('execute function called');
-    console.log('Request body value : ', req.body);
-    logData(req);
-    res.send(200, 'Execute');
-}
+// exports.execute = function(req, res) {
+//     console.log("5 -- For Execute");	
+//     console.log("4");	
+//     console.log("3");	
+//     console.log("2");	
+//     console.log("1");	
+//     console.log('execute function called');
+//     console.log('Request body value : ', req.body);
+//     logData(req);
+//     res.send(200, 'Execute');
+// }
 
-exports.executes = function (req, res) {
+exports.execute = function (req, res) {
 
     console.log("5 -- For Execute");	
     console.log("4");	
