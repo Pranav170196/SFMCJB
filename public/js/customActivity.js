@@ -62,7 +62,7 @@ define([
                     $('#scenarioId').val(val);
                 }
 
-                if (key === 'hcpId') {
+                if (key === 'body') {
                     $('#hcpId').val(val);
                 }                                                               
 
@@ -91,15 +91,15 @@ define([
     function save() {
 
         var marketCode = $('#marketCode').val();
-        var brandName = $('#brandName').val();
+        var authToken = $('#authToken').val();
         var scenarioId = $('#scenarioId').val();
-        var hcpId = $('#hcpId').val();
+        var body = $('#hcpId').val();
 
         payload['arguments'].execute.inArguments = [{
             "marketCode": marketCode,
             "brandName": brandName,
             "scenarioId": scenarioId,
-            "hcpId": hcpId
+            "hcpId": body
         }];
 
         payload['metaData'].isConfigured = true;
