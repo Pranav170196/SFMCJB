@@ -86,7 +86,7 @@ exports.save = function (req, res) {
 /*
  * POST Handler for /execute/ route of Activity.
  */
-exports.execute = function (req, res) {
+exports.execute = async function (req, res) {
     console.log("5 -- For Execute");	
     console.log("4");	
     console.log("3");	
@@ -110,83 +110,83 @@ exports.execute = function (req, res) {
     //     brandName: brandName
     // }
 
-    // const externalKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
-    // const awsUrl = 'https://r7xy19uipg.execute-api.eu-west-1.amazonaws.com/dev';
-    // const accessUrl = 'https://mcxk3jwz79lcp1qf21j7hmh18z3m.auth.marketingcloudapis.com/v2/token';
-    // const restUrl = `https://mcxk3jwz79lcp1qf21j7hmh18z3m.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${externalKey}/rows/`
-    // const formData = {
-    //     "hcpId": "123jdj",
-    //    "scenarioId": "qwe",
-    //    "marketCode": "hhd",
-    //    "brandName": "anfknf"
-    // }
-    // const finalFormData = {
+    const externalKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
+    const awsUrl = 'https://r7xy19uipg.execute-api.eu-west-1.amazonaws.com/dev';
+    const accessUrl = 'https://mcxk3jwz79lcp1qf21j7hmh18z3m.auth.marketingcloudapis.com/v2/token';
+    const restUrl = `https://mcxk3jwz79lcp1qf21j7hmh18z3m.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${externalKey}/rows/`
+    const formData = {
+        "hcpId": "123jdj",
+       "scenarioId": "qwe",
+       "marketCode": "hhd",
+       "brandName": "anfknf"
+    }
+    const finalFormData = {
 
-    //     "items": [{
+        "items": [{
      
-    //        "hcpId":"1234",
+           "hcpId":"1234",
      
-    //        "marketCode" : "Jones",
+           "marketCode" : "Jones",
      
-    //        "scenarioId": "23456",
+           "scenarioId": "23456",
      
-    //        "ID": "112",
+           "ID": "112",
 
-    //        "status": "Failure",
+           "status": "Failure",
 
-    //        "brandName": "Nike"
+           "brandName": "Nike"
      
-    //     }]
+        }]
      
-    //  }
+     }
       
-    // const awsApiData = JSON.stringify(formData);
-    // const awsApiOptions = {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: awsApiData
-    // }
-    // const accessUrlOptions = {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({
-    //         "grant_type": "client_credentials",
-    //         "client_id": "1jwrskb8tqp4wn2y5eiebh6g",
-    //         "client_secret": "4xYx8fpQxO4dLSa6TXBPtccF",
-    //         "account_id": "536005973"
-    //     })
-    // }
-    // await fetch(awsUrl, awsApiOptions)
-    // .then(data => data.json())
-    // .then(async (result) => {
-    //     console.log('aws api response', result);
-    //     await fetch(accessUrl,accessUrlOptions)
-    //     .then(data => data.json())
-    //     .then(async (result) => {
-    //         console.log('acess api response', result)
-    //         // formData["ID"]="112";
-    //         // formData["status"]="success";
-    //         await fetch(restUrl,{
-    //             method: "PUT",
-    //             headers: {
-    //                 'Authorization': `Bearer ${result.access_token}`,
-    //                 'Content-Type':'application/json'
-    //             },
-    //             // body: JSON.stringify(formData),
-    //             body: JSON.stringify(finalFormData)
-    //             // redirect: "follow"
-    //         })
-    //         .then(res => res.json())
-    //         .then(result => {
-    //             console.log('Final form data is ', finalFormData);
-    //             console.log('Final result is ', result)
-    //         });
-    //     })
-    // });
+    const awsApiData = JSON.stringify(formData);
+    const awsApiOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: awsApiData
+    }
+    const accessUrlOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "grant_type": "client_credentials",
+            "client_id": "1jwrskb8tqp4wn2y5eiebh6g",
+            "client_secret": "4xYx8fpQxO4dLSa6TXBPtccF",
+            "account_id": "536005973"
+        })
+    }
+    await fetch(awsUrl, awsApiOptions)
+    .then(data => data.json())
+    .then(async (result) => {
+        console.log('aws api response', result);
+        await fetch(accessUrl,accessUrlOptions)
+        .then(data => data.json())
+        .then(async (result) => {
+            console.log('acess api response', result)
+            // formData["ID"]="112";
+            // formData["status"]="success";
+            await fetch(restUrl,{
+                method: "PUT",
+                headers: {
+                    'Authorization': `Bearer ${result.access_token}`,
+                    'Content-Type':'application/json'
+                },
+                // body: JSON.stringify(formData),
+                body: JSON.stringify(finalFormData)
+                // redirect: "follow"
+            })
+            .then(res => res.json())
+            .then(result => {
+                console.log('Final form data is ', finalFormData);
+                console.log('Final result is ', result)
+            });
+        })
+    });
 
 
     logData(req);
