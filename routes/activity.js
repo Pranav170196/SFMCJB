@@ -86,26 +86,6 @@ exports.save = function (req, res) {
 /*
  * POST Handler for /execute/ route of Activity.
  */
-
-async function apiCall(formData) {
-    let result;
-
-    const url = 'https://r7xy19uipg.execute-api.eu-west-1.amazonaws.com/dev';
-    await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type':'application/json'
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('API Called Successfully: ', data);
-        result = data;
-    });
-    return result;
-}
-
 exports.execute = function (req, res) {
 
     console.log("5 -- For Execute");	
@@ -129,7 +109,6 @@ exports.execute = function (req, res) {
     const hcpId = requestBody.body;
 
 
-
     // const client = require('twilio')(accountSid, authToken); 
      
     // client.messages 
@@ -149,29 +128,21 @@ exports.execute = function (req, res) {
     }
 
     console.log('form data value is ', JSON.stringify(formData));
-    const result = setTimeout(() => {
-        apiCall(formData)
-    },2000);
+    let result;
 
-    console.log('api response is ', result);
-
-    // previous api calling ---
-
-    // const url = 'https://r7xy19uipg.execute-api.eu-west-1.amazonaws.com/dev';
-    // fetch(url, {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type':'application/json'
-    //     },
-    //     body: JSON.stringify(formData)
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //     console.log('API Called Successfully: ', data);
-    //     result = data;
-    // });
-
-    // previous api calling ---
+    const url = 'https://r7xy19uipg.execute-api.eu-west-1.amazonaws.com/dev';
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('API Called Successfully: ', data);
+        result = data;
+    });
 
     // error handling and store the response within marketing cloud
 
@@ -195,54 +166,59 @@ exports.execute = function (req, res) {
     //     body: JSON.stringify()
     // })
 
+    const externalKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
 
-    // previous SFMC API calling
+    const authUrl = "https://mcxk3jwz79lcp1qf21j7hmh18z3m.auth.marketingcloudapis.com/v2/token";
+    const apiUrl = `https://mcxk3jwz79lcp1qf21j7hmh18z3m.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${externalKey}/rows/`
 
-    // const externalKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-    // const authUrl = "https://mcxk3jwz79lcp1qf21j7hmh18z3m.auth.marketingcloudapis.com/v2/token";
-    // const apiUrl = `https://mcxk3jwz79lcp1qf21j7hmh18z3m.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${externalKey}/rows/`
+    const raw = JSON.stringify({
+    "grant_type": "client_credentials",
+    "client_id": "1jwrskb8tqp4wn2y5eiebh6g",
+    "client_secret": "4xYx8fpQxO4dLSa6TXBPtccF",
+    "account_id": "536005973"
+    });
 
-    // const myHeaders = new Headers();
-    // myHeaders.append("Content-Type", "application/json");
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+    };
 
-    // const raw = JSON.stringify({
-    // "grant_type": "client_credentials",
-    // "client_id": "1jwrskb8tqp4wn2y5eiebh6g",
-    // "client_secret": "4xYx8fpQxO4dLSa6TXBPtccF",
-    // "account_id": "536005973"
-    // });
+    const apiRequestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: result.stringify()
+    }
 
-    // const requestOptions = {
-    //     method: "POST",
-    //     headers: myHeaders,
-    //     body: raw,
-    //     redirect: "follow"
-    // };
+    fetch(authUrl, requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+        fetch(apiUrl, {
+            method: post,
+            headers: {
+                'Authorization': result.authToken,
+                'Content-Type':'application/json'
+            },
+            body: formData.stringify(),
+            redirect: "follow"
+        })
+        console.log('info added to DE successfully');
+    })
+    .catch((error) => console.error(error));
 
-    // const apiRequestOptions = {
-    //     method: "POST",
-    //     headers: myHeaders,
-    //     body: result.stringify()
-    // }
 
-    // fetch(authUrl, requestOptions)
-    // .then((response) => response.json())
-    // .then((result) => {
-    //     fetch(apiUrl, {
-    //         method: post,
-    //         headers: {
-    //             'Authorization': result.authToken,
-    //             'Content-Type':'application/json'
-    //         },
-    //         body: formData.stringify(),
-    //         redirect: "follow"
-    //     })
-    //     console.log('info added to DE successfully');
-    // })
-    // .catch((error) => console.error(error));
 
-    // previous SFMC API Calling
+
+
+
+
+    
+
+
 
     // {
     //     "hcpId": "123jdj",
@@ -250,6 +226,10 @@ exports.execute = function (req, res) {
     //    "marketCode": "hhd",
     //    "brandName": "anfknf"
     // }
+
+
+
+
 
 
     // FOR TESTING
