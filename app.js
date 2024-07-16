@@ -36,7 +36,7 @@ app.post('/logout', routes.logout );
 // app.post('/journeybuilder/save/', activity.save );
 // app.post('/journeybuilder/validate/', activity.validate );
 // app.post('/journeybuilder/publish/', activity.publish );
-// app.post('/journeybuilder/execute/', activity.execute );
+app.post('/journeybuilder/execute/', activity.execute );
 
 app.post('/save/',activity.save);
 app.post('/validate/', activity.validate );
