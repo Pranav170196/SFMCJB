@@ -12,105 +12,11 @@
            "SuggestionMessage":"test"
        }
     },
-    "arguments": {
-        "execute": {
-            "inArguments": [
-                {
-                    "marketCode": "",
-                    "hcpId": "{{Contact.Default.hcpId}}",
-                    "brandName": "",
-                    "scenarioId": ""
-                }    
-            ],
-            "outArguments": [],
-            "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/execute",
-            "verb": "POST",
-            "body": "",
-            "format": "json",
-            "useJwt": false,
-            "timeout": 2000
-        }
-    },
-    "configurationArguments": {
-      "applicationExtensionKey": "e83089ed-8936-4100-8473-125c712c9592",
-       "save": {
-           "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/save",
-            "verb": "POST",
-            "body": "",
-            "format": "json",
-            "useJwt": false,
-            "timeout": 2000
-       },
-       "publish": {
-           "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/publish",
-            "verb": "POST",
-            "body": "",
-            "format": "json",
-            "useJwt": false,
-            "timeout": 2000
-       },
-       "validate": {
-           "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/validate",
-            "verb": "POST",
-            "body": "",
-            "format": "json",
-            "useJwt": false,
-            "timeout": 2000
-       },
-       "stop": {
-           "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/stop",
-            "verb": "POST",
-            "body": "",
-            "format": "json",
-            "useJwt": false,
-            "timeout": 2000
-       }
-    },
-    "wizardSteps": [
-       { "label": "Configure Suggestion", "key": "step1" }
-    ],
     "userInterfaces": {
        "configModal": {
            "height": 600,
            "width": 800,
            "fullscreen": false
        }
-    },
-    "schema": {
-        "arguments": {
-            "execute": {
-                "inArguments": [
-                    {
-                        "marketCode": {
-                            "dataType": "String",
-                            "isNullable": false,
-                            "direction": "out"   
-                        }
-                    },                    
-                    {
-                        "brandName": {
-                            "dataType": "String",
-                            "isNullable": false,
-                            "direction": "out"   
-                        }
-                    },                    
-                    {
-                        "hcpId": {
-                            "dataType": "String",
-                            "isNullable": false,
-                            "direction": "out"   
-                        }
-                    },                    
-                    {
-                        "scenarioId": {
-                            "dataType": "String",
-                            "isNullable": false,
-                            "direction": "out"
-                        }
-                    }
-                ],
-                "outArguments": []
-            }
-        }
     }
 }
