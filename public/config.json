@@ -19,7 +19,9 @@
                     "marketCode": "",
                     "hcpId": "{{Contact.Default.hcpId}}",
                     "brandName": "",
-                    "scenarioId": ""
+                    "scenarioId": "",
+                    "ID": "",
+                    "status": ""
                 }    
             ],
             "outArguments": [],
