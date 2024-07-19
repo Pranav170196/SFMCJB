@@ -12,21 +12,16 @@
            "SuggestionMessage":"test"
        }
     },
-    "userInterfaces": {
-       "configModal": {
-           "height": 600,
-           "width": 800,
-           "fullscreen": false
-       }
-    },
     "arguments": {
         "execute": {
             "inArguments": [
                 {
                     "marketCode": "",
-                    "hcpId": "{{Contact.key}}",
-                    "brandName": "{{Contact.Attribute.JourneyEntrySource.brandName}}",
-                    "scenarioId": ""
+                    "hcpId": "{{Contact.Default.hcpId}}",
+                    "brandName": "",
+                    "scenarioId": "",
+                    "ID": "",
+                    "status": ""
                 }    
             ],
             "outArguments": [],
@@ -72,5 +67,52 @@
             "useJwt": false,
             "timeout": 2000
        }
+    },
+    "wizardSteps": [
+       { "label": "Configure Suggestion", "key": "step1" }
+    ],
+    "userInterfaces": {
+       "configModal": {
+           "height": 600,
+           "width": 800,
+           "fullscreen": false
+       }
+    },
+    "schema": {
+        "arguments": {
+            "execute": {
+                "inArguments": [
+                    {
+                        "marketCode": {
+                            "dataType": "String",
+                            "isNullable": false,
+                            "direction": "out"   
+                        }
+                    },                    
+                    {
+                        "brandName": {
+                            "dataType": "String",
+                            "isNullable": false,
+                            "direction": "out"   
+                        }
+                    },                    
+                    {
+                        "hcpId": {
+                            "dataType": "String",
+                            "isNullable": false,
+                            "direction": "out"   
+                        }
+                    },                    
+                    {
+                        "scenarioId": {
+                            "dataType": "String",
+                            "isNullable": false,
+                            "direction": "out"
+                        }
+                    }
+                ],
+                "outArguments": []
+            }
+        }
     }
 }
