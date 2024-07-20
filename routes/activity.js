@@ -105,7 +105,7 @@ exports.execute = async function (req, res) {
          scenarioId: scenarioId,
          brandName: brandName
      }
-     console.log('Form data is ', JSON.stringify(finalFormData));
+     console.log('Form data is ', JSON.stringify(formData));
 
     const externalKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
     const awsUrl = 'https://r7xy19uipg.execute-api.eu-west-1.amazonaws.com/dev';
