@@ -17,10 +17,10 @@
         "execute": {
            "inArguments":[
  {
-                    "hcpId": "{{Contact.Attribute.Suman_SmsCustomActivity.EmailAddress}}",
-                    "brandName": "{{Contact.Attribute.Suman_SmsCustomActivity.Phone}}",
-                    "scenarioId": "{{Contact.Attribute.Suman_SmsCustomActivity.EmailAddress}}",
-                    "marketCode": "{{Contact.Attribute.Suman_SmsCustomActivity.Phone}}"
+                    "hcpId": "{{Contact.Key}}",
+                    "brandName": "{{Contact.Attribute.JourneyEntrySource.brandName}}",
+                    "scenarioId": "{{Contact.Attribute.JourneyEntrySource.scenarioId}}",
+                    "marketCode": "{{Contact.Attribute.JourneyEntrySource.marketCode}}"
                 }
  ],
           "outArguments": [],

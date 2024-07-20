@@ -90,38 +90,40 @@ exports.execute = async function (req, res) {
      console.log('Executing');
      //console.log("Executed: "+req.body.inArguments[0]);
     
-    // var requestBody = req.body.inArguments[0];
+    var requestBody = req.body.inArguments[0];
     // const to = requestBody.to;
 
 
-    // const marketCode = requestBody.marketCode;
-    // const brandName = requestBody.brandName;
-    // const scenarioId = requestBody.scenarioId;
-    // const hcpId = requestBody.body;
+     const marketCode = requestBody.marketCode;
+     const brandName = requestBody.brandName;
+     const scenarioId = requestBody.scenarioId;
+     const hcpId = requestBody.body;
 
-    // const formData = {
-    //     hcpId: hcpId,
-    //     marketCode: marketCode,
-    //     scenarioId: scenarioId,
-    //     brandName: brandName
-    // }
+     const formData = {
+         hcpId: hcpId,
+         marketCode: marketCode,
+         scenarioId: scenarioId,
+         brandName: brandName
+     }
+     console.log('Form data is ', JSON.stringify(finalFormData));
+
     const externalKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
     const awsUrl = 'https://r7xy19uipg.execute-api.eu-west-1.amazonaws.com/dev';
     const accessUrl = 'https://mcxk3jwz79lcp1qf21j7hmh18z3m.auth.marketingcloudapis.com/v2/token';
     const restUrl = `https://mcxk3jwz79lcp1qf21j7hmh18z3m.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${externalKey}/rows/`;
-    const formData = {
+    /* const formData = {
         "hcpId": "123jdj",
        "scenarioId": "qwe",
        "marketCode": "hhd",
        "brandName": "anfknf"
-    }
+    }*/
     const finalFormData = {
         "items": [{
            "hcpId":"1234",
            "marketCode" : "Jones",
            "scenarioId": "23456",
            "ID": "112",
-           "status": "Failure",
+           "status": "Success",
            "brandName": "Nike"
         }]
      };
