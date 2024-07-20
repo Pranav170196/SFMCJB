@@ -20,7 +20,8 @@
                     "hcpId": "{{Contact.Key}}",
                     "brandName": "",
                     "scenarioId": "",
-                    "marketCode": ""
+                    "marketCode": "",
+                    "ID":"{{Contact.Attribute.hcp_suggestion_de.ID}}"
                 }
  ],
           "outArguments": [],
