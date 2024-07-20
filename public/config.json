@@ -17,10 +17,10 @@
         "execute": {
            "inArguments":[
  {
-                    "hcpId": "{{Contact.Key}}",
-                    "brandName": "{{Contact.Attribute.JourneyEntrySource.brandName}}",
-                    "scenarioId": "{{Contact.Attribute.JourneyEntrySource.scenarioId}}",
-                    "marketCode": "{{Contact.Attribute.JourneyEntrySource.marketCode}}"
+                    "hcpId": "{{Contact.Attribute.hcpId}}",
+                    "brandName": "",
+                    "scenarioId": "",
+                    "marketCode": ""
                 }
  ],
           "outArguments": [],
