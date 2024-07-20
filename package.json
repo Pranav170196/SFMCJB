@@ -1,5 +1,5 @@
 {
-  "name": "twilio-journey-builder-example", 
+  "name": "Suggestion-journey-builder-example", 
   "version": "1.0.0",
   "description": "Journey Builder Activity Template",
   "engines": {
@@ -13,8 +13,8 @@
     "url": "git+https://github.com/jmaitz/twilio-sfmc.git"
   },
   "keywords": [
-    "twilio",
-    "twilio salesforce marketing cloud",
+    "Suggestion APi",
+    "Suggestion salesforce marketing cloud",
     "journey",
     "builder",
     "salesforce marketing cloud",
