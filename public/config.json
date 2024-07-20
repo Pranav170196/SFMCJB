@@ -1,118 +1,101 @@
 {
     "workflowApiVersion": "1.1",
     "metaData": {
-       "icon": "images/iconSmall.png",
-       "category": "message"
+        "icon": "images/icon.png",
+        "iconSmall": "images/iconSmall.png",
+        "category": "message"
     },
     "type": "REST",
     "lang": {
-       "en-US": {
-           "name": "Suggestion API",
-           "description": "Send Suggestion API with Journey Builder",
-           "SuggestionMessage":"test"
-       }
+        "en-US": {
+            "name": "Custom Suggestion App1",
+          "description": "A Template for a custom Journey Builder activity for Suggestion sending",
+          "step1Label": "Configure Activity"
+        }
     },
     "arguments": {
         "execute": {
-            "inArguments": [
-                {
-                    "marketCode": "",
-                    "hcpId": "{{Contact.Default.hcpId}}",
-                    "brandName": "",
-                    "scenarioId": "",
-                    "ID": "",
-                    "status": ""
-                }    
-            ],
-            "outArguments": [],
-            "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/execute",
-            "verb": "POST",
+           "inArguments":[
+ {
+                    "hcpId": "{{Contact.Attribute.Suman_SmsCustomActivity.EmailAddress}}",
+                    "brandName": "{{Contact.Attribute.Suman_SmsCustomActivity.Phone}}",
+                    "scenarioId": "{{Contact.Attribute.Suman_SmsCustomActivity.EmailAddress}}",
+                    "marketCode": "{{Contact.Attribute.Suman_SmsCustomActivity.Phone}}"
+                }
+ ],
+          "outArguments": [],
+          "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/journeybuilder/execute",
+           "verb": "POST",
             "body": "",
+            "header": "",
             "format": "json",
-            "useJwt": false,
-            "timeout": 2000
+            "timeout": 10000
         }
     },
     "configurationArguments": {
       "applicationExtensionKey": "e83089ed-8936-4100-8473-125c712c9592",
-       "save": {
-           "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/save",
-            "verb": "POST",
-            "body": "",
-            "format": "json",
-            "useJwt": false,
-            "timeout": 2000
+      "save": {
+        "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/journeybuilder/save",
+          "verb": "POST"
        },
        "publish": {
-           "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/publish",
-            "verb": "POST",
-            "body": "",
-            "format": "json",
-            "useJwt": false,
-            "timeout": 2000
+        "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/journeybuilder/publish",
+           "verb": "POST"
        },
-       "validate": {
-           "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/validate",
-            "verb": "POST",
-            "body": "",
-            "format": "json",
-            "useJwt": false,
-            "timeout": 2000
-       },
-       "stop": {
-           "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/stop",
-            "verb": "POST",
-            "body": "",
-            "format": "json",
-            "useJwt": false,
-            "timeout": 2000
-       }
+      "stop": {
+        "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/journeybuilder/stop",
+           "verb": "POST"
+      },
+      "validate": {
+        "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/journeybuilder/validate",
+        "verb": "POST"
+      }
     },
     "wizardSteps": [
-       { "label": "Configure Suggestion", "key": "step1" }
+        { "label": "Configure Activity", "key": "step1" }
     ],
     "userInterfaces": {
-       "configModal": {
-           "height": 600,
-           "width": 800,
-           "fullscreen": false
-       }
+        "configModal": {
+            "height": 400,
+            "width": 1000,
+          "fullscreen": false
+        }
     },
     "schema": {
         "arguments": {
             "execute": {
-                "inArguments": [
-                    {
-                        "marketCode": {
-                            "dataType": "String",
-                            "isNullable": false,
-                            "direction": "out"   
-                        }
-                    },                    
-                    {
-                        "brandName": {
-                            "dataType": "String",
-                            "isNullable": false,
-                            "direction": "out"   
-                        }
-                    },                    
-                    {
-                        "hcpId": {
-                            "dataType": "String",
-                            "isNullable": false,
-                            "direction": "out"   
-                        }
-                    },                    
-                    {
-                        "scenarioId": {
-                            "dataType": "String",
-                            "isNullable": false,
-                            "direction": "out"
-                        }
+              "inArguments": [
+                {
+                    "hcpId": {
+                        "dataType": "String",
+                        "isNullable": false,
+                        "direction": "out"  
                     }
-                ],
+                },                    
+                {
+                    "brandName": {
+                        "dataType": "String",
+                        "isNullable": false,
+                        "direction": "out"  
+                    }
+                },                    
+                {
+                    "scenarioId": {
+                        "dataType": "String",
+                        "isNullable": false,
+                        "direction": "out"  
+                    }
+                },                    
+                {
+                    "marketCode": {
+                        "dataType": "String",
+                        "isNullable": false,
+                        "direction": "out"
+                    }
+                }
+            ],
                 "outArguments": []
             }
         }
     }
-}
+ }
