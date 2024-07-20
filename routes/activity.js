@@ -98,6 +98,11 @@ exports.execute = async function (req, res) {
      const brandName = requestBody.brandName;
      const scenarioId = requestBody.scenarioId;
      const hcpId = requestBody.body;
+     
+     console.log('marketCode is ', marketCode);
+     console.log('brandName is ', brandName);
+     console.log('scenarioId is ', scenarioId);
+     console.log('hcpId is ', hcpId);
 
      const formData = {
          hcpId: hcpId,
