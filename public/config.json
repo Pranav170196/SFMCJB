@@ -17,7 +17,7 @@
         "execute": {
            "inArguments":[
  {
-                    "hcpId": "{{Contact.Attribute.hcpId}}",
+                    "hcpId": "{{Contact.Key}}",
                     "brandName": "",
                     "scenarioId": "",
                     "marketCode": ""
