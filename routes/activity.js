@@ -99,12 +99,14 @@ exports.execute = async function (req, res) {
      const scenarioId = requestBody.scenarioId;
      const hcpId = requestBody.hcpId;
      const ID= requestBody.ID;
+     const deKey= requestBody.deName;
 
      console.log('marketCode is ', marketCode);
      console.log('brandName is ', brandName);
      console.log('scenarioId is ', scenarioId);
      console.log('hcpId is ', hcpId);
      console.log('ID is ', ID);
+     console.log('DE external Key is ', deKey);
 
      const formData = {
          hcpId: hcpId,
@@ -114,7 +116,8 @@ exports.execute = async function (req, res) {
      }
      console.log('Form data is ', JSON.stringify(formData));
 
-    const externalKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
+    //const externalKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
+    const externalKey = deKey;
     const awsUrl = 'https://r7xy19uipg.execute-api.eu-west-1.amazonaws.com/dev';
     const accessUrl = 'https://mcxk3jwz79lcp1qf21j7hmh18z3m.auth.marketingcloudapis.com/v2/token';
     const restUrl = `https://mcxk3jwz79lcp1qf21j7hmh18z3m.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${externalKey}/rows/`;

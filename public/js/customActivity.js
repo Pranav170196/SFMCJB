@@ -64,7 +64,11 @@ define([
 
                 if (key === 'hcpId') {
                     $('#hcpId').val(val);
-                }                                                               
+                }
+                
+                if (key === 'deName') {
+                    $('#deName').val(val);
+                }
 
             })
         });
@@ -99,6 +103,7 @@ define([
             "marketCode": marketCode,
             "brandName": brandName,
             "scenarioId": scenarioId,
+            "deName":deName,
             "hcpId": hcpId
         }];
 

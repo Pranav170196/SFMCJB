@@ -21,6 +21,7 @@
                     "brandName": "",
                     "scenarioId": "",
                     "marketCode": "",
+                    "deName":"",
                     "ID":"{{Contact.Attribute.hcp_suggestion_de.ID}}"
                 }
  ],
@@ -89,6 +90,13 @@
                 },                    
                 {
                     "marketCode": {
+                        "dataType": "String",
+                        "isNullable": false,
+                        "direction": "out"
+                    }
+                },
+                {
+                    "deName": {
                         "dataType": "String",
                         "isNullable": false,
                         "direction": "out"
