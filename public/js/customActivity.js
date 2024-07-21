@@ -98,6 +98,7 @@ define([
         var brandName = $('#brandName').val();
         var scenarioId = $('#scenarioId').val();
         var hcpId = $('#hcpId').val();
+        var deName = $('#deName').val();
 
         payload['arguments'].execute.inArguments = [{
             "marketCode": marketCode,
