@@ -101,6 +101,14 @@ exports.execute = async function (req, res) {
      const ID= requestBody.ID;
      const deKey= requestBody.deName;
 
+    // const marketCode = 'NW';
+    // const brandName = 'AZ';
+    // const scenarioId = '123432';
+    // const hcpId = '123djh';
+    // const ID = '115';
+    // const deKey = '04528DDF-ACF7-442D-8E48-59A4A341992C';
+    const oldKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
+
      console.log('marketCode is ', marketCode);
      console.log('brandName is ', brandName);
      console.log('scenarioId is ', scenarioId);
@@ -112,7 +120,8 @@ exports.execute = async function (req, res) {
          hcpId: hcpId,
          marketCode: marketCode,
          scenarioId: scenarioId,
-         brandName: brandName
+         brandName: brandName,
+         ID: ID
      }
      console.log('Form data is ', JSON.stringify(formData));
 
@@ -120,13 +129,15 @@ exports.execute = async function (req, res) {
     const externalKey = deKey;
     const awsUrl = 'https://r7xy19uipg.execute-api.eu-west-1.amazonaws.com/dev';
     const accessUrl = 'https://mcxk3jwz79lcp1qf21j7hmh18z3m.auth.marketingcloudapis.com/v2/token';
-    const restUrl = `https://mcxk3jwz79lcp1qf21j7hmh18z3m.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${externalKey}/rows/`;
+    const restUrl = `https://mcxk3jwz79lcp1qf21j7hmh18z3m.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${deKey}/rows/`;
     /* const formData = {
         "hcpId": "123jdj",
        "scenarioId": "qwe",
        "marketCode": "hhd",
        "brandName": "anfknf"
     }*/
+
+    const newFormData = formData;
     const finalFormData = {
         "items": [{
            "hcpId":"1234",
@@ -161,26 +172,31 @@ exports.execute = async function (req, res) {
     .then(data => data.json())
     .then(async (result) => {
         console.log('aws api response', result);
+        newFormData["status"] = result.Message;
         await fetch(accessUrl,accessUrlOptions)
         .then(data => data.json())
         .then(async (result) => {
-            console.log('acess api response', result)
+            console.log('acess api response', result);
             // formData["ID"]="112";
             // formData["status"]="success";
+            const apiData = {
+                "items":[newFormData]
+            }
             await fetch(restUrl,{
-                method: "PUT",
+                method: "POST",
                 headers: {
                     'Authorization': `Bearer ${result.access_token}`,
                     'Content-Type':'application/json'
                 },
                 // body: JSON.stringify(formData),
-                body: JSON.stringify(finalFormData)
+                body: JSON.stringify(apiData)
                 // redirect: "follow"
             })
             .then(res => res.json())
             .then(result => {
                 console.log('Final form data is ', JSON.stringify(finalFormData));
                 console.log('Final result is ', result);
+                console.log('API Called Successfully');
             });
         })
     });
