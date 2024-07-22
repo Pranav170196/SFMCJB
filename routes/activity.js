@@ -105,9 +105,9 @@ exports.execute = async function (req, res) {
     // const brandName = 'AZ';
     // const scenarioId = '123432';
     // const hcpId = '123djh';
-    // const ID = '115';
+    // const ID = undefined;
     // const deKey = '04528DDF-ACF7-442D-8E48-59A4A341992C';
-    const oldKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
+    // const oldKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
 
      console.log('marketCode is ', marketCode);
      console.log('brandName is ', brandName);
@@ -120,8 +120,8 @@ exports.execute = async function (req, res) {
          hcpId: hcpId,
          marketCode: marketCode,
          scenarioId: scenarioId,
-         brandName: brandName,
-         ID: ID
+         brandName: brandName
+        //  ID: ID
      }
      console.log('Form data is ', JSON.stringify(formData));
      console.log('Form data length is ', formData.length);
@@ -139,16 +139,16 @@ exports.execute = async function (req, res) {
     }*/
 
     const newFormData = formData;
-    const finalFormData = {
-        "items": [{
-           "hcpId":"1234",
-           "marketCode" : "Jones",
-           "scenarioId": "23456",
-           "ID": "112",
-           "status": "Success",
-           "brandName": "Nike"
-        }]
-     };
+    // const finalFormData = {
+    //     "items": [{
+    //        "hcpId":"1234",
+    //        "marketCode" : "Jones",
+    //        "scenarioId": "23456",
+    //        "ID": "112",
+    //        "status": "Success",
+    //        "brandName": "Nike"
+    //     }]
+    //  };
     const awsApiData = JSON.stringify(formData);
     const awsApiOptions = {
         method: "POST",
@@ -179,11 +179,11 @@ exports.execute = async function (req, res) {
         await fetch(accessUrl,accessUrlOptions)
         .then(data => data.json())
         .then(async (result) => {
-            console.log('acess api response', result);
-            console.log('access api response message is', result.access_token);
-            console.log('access api length is ', response.length);
-            // formData["ID"]="112";
-            // formData["status"]="success";
+            console.log('acess token api response', result);
+            console.log('access token api response message is', result.access_token);
+            console.log('access token api length is ', result.length);
+            // newFormData["ID"]="112";
+            newFormData["status"]=result.Message;
             const apiData = {
                 "items":[newFormData]
             }
@@ -202,7 +202,6 @@ exports.execute = async function (req, res) {
                 console.log('Final form data is ', JSON.stringify(finalFormData));
                 console.log('Final result is ', result);
                 console.log('Final result ID is ', result.requestId);
-                cons
                 console.log('API Called Successfully');
             });
         })
