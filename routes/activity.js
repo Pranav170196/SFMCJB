@@ -187,6 +187,7 @@ exports.execute = async function (req, res) {
             const apiData = {
                 "items":[newFormData]
             }
+            console.log('final submitted data is ', apiData);
             await fetch(restUrl,{
                 method: "POST",
                 headers: {
