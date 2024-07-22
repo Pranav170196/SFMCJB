@@ -98,7 +98,7 @@ exports.execute = async function (req, res) {
      const brandName = requestBody.brandName;
      const scenarioId = requestBody.scenarioId;
      const hcpId = requestBody.hcpId;
-     const ID= requestBody.ID;
+    //  const ID= requestBody.ID;
      const deKey= requestBody.deName;
 
     // const marketCode = 'NW';
@@ -113,7 +113,7 @@ exports.execute = async function (req, res) {
      console.log('brandName is ', brandName);
      console.log('scenarioId is ', scenarioId);
      console.log('hcpId is ', hcpId);
-     console.log('ID is ', ID);
+    //  console.log('ID is ', ID);
      console.log('DE external Key is ', deKey);
 
      const formData = {
