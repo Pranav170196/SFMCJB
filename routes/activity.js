@@ -183,7 +183,6 @@ exports.execute = async function (req, res) {
             console.log('access token api response message is', result.access_token);
             console.log('access token api length is ', result.length);
             // newFormData["ID"]="112";
-            newFormData["status"]=result.Message;
             const apiData = {
                 "items":[newFormData]
             }
