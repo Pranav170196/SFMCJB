@@ -124,6 +124,7 @@ exports.execute = async function (req, res) {
          ID: ID
      }
      console.log('Form data is ', JSON.stringify(formData));
+     console.log('Form data length is ', formData.length);
 
     //const externalKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
     const externalKey = deKey;
@@ -172,11 +173,15 @@ exports.execute = async function (req, res) {
     .then(data => data.json())
     .then(async (result) => {
         console.log('aws api response', result);
+        console.log('aws api message is', result.Message);
+        console.log('aws api length is ', result.length);
         newFormData["status"] = result.Message;
         await fetch(accessUrl,accessUrlOptions)
         .then(data => data.json())
         .then(async (result) => {
             console.log('acess api response', result);
+            console.log('access api response message is', result.access_token);
+            console.log('access api length is ', response.length);
             // formData["ID"]="112";
             // formData["status"]="success";
             const apiData = {
@@ -196,6 +201,8 @@ exports.execute = async function (req, res) {
             .then(result => {
                 console.log('Final form data is ', JSON.stringify(finalFormData));
                 console.log('Final result is ', result);
+                console.log('Final result ID is ', result.requestId);
+                cons
                 console.log('API Called Successfully');
             });
         })
