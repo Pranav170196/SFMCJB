@@ -19,7 +19,7 @@
  {
                     "hcpId": "{{Contact.Key}}",
                     "brandName": "",
-                    "scenarioId": "",
+                    "scenarioId": "{{Contact.Attribute.hcp_veeva_suggestion_de.scenarioId}}",
                     "marketCode": "",
                     "deName":"",
                     "ID":"{{Contact.Attribute.hcp_suggestion_de.ID}}"
