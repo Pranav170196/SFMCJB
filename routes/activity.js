@@ -5,6 +5,7 @@ var util = require('util');
 const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var http = require('https');
+const AccessToken = require('twilio/lib/jwt/AccessToken');
 
 exports.logExecuteData = [];
 
@@ -94,72 +95,47 @@ exports.execute = async function (req, res) {
     // const to = requestBody.to;
 
 
-     const marketCode = requestBody.marketCode;
-     const brandName = requestBody.brandName;
-     const scenarioId = requestBody.scenarioId;
-     const hcpId = requestBody.hcpId;
-    //  const ID= requestBody.ID;
-     const deKey= requestBody.deName;
+     const ContactID = requestBody.ContactID;
+     const FirstName = requestBody.FirstName;
+     const LastName = requestBody.LastName;
+     const EmailAddress = requestBody.EmailAddress;
+  
 
-    // const marketCode = 'NW';
-    // const brandName = 'AZ';
-    // const scenarioId = '123432';
-    // const hcpId = '123djh';
-    // const ID = undefined;
-    // const deKey = '04528DDF-ACF7-442D-8E48-59A4A341992C';
-    // const oldKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
 
-     console.log('marketCode is ', marketCode);
-     console.log('brandName is ', brandName);
-     console.log('scenarioId is ', scenarioId);
-     console.log('hcpId is ', hcpId);
-    //  console.log('ID is ', ID);
-     console.log('DE external Key is ', deKey);
 
      const formData = {
-         hcpId: hcpId,
-         marketCode: marketCode,
-         scenarioId: scenarioId,
-         brandName: brandName
-        //  ID: ID
+        ContactID: ContactID,
+        FirstName: FirstName,
+        LastName: LastName,
+        EmailAddress: EmailAddress
+ 
      }
-     console.log('Form data is ', JSON.stringify(formData));
-     console.log('Form data length is ', formData.length);
+    
 
     //const externalKey = '3C29AFDE-EFD1-4469-9638-C98E5EB95695';
-    const externalKey = deKey;
-    const awsUrl = 'https://r7xy19uipg.execute-api.eu-west-1.amazonaws.com/dev';
-    const accessUrl = 'https://mcxk3jwz79lcp1qf21j7hmh18z3m.auth.marketingcloudapis.com/v2/token';
-    const restUrl = `https://mcxk3jwz79lcp1qf21j7hmh18z3m.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${deKey}/rows/`;
-    /* const formData = {
-        "hcpId": "123jdj",
-       "scenarioId": "qwe",
-       "marketCode": "hhd",
-       "brandName": "anfknf"
-    }*/
+    
+    const externalKey_Source = '1B634897-BB9A-4910-840A-437E00EFA081';
+    const externalKey_Target = '8EE09EDD-22AE-4AD1-9290-E14B24175795';
+
+    const accessUrl = 'https://mc4by0xw84s11pznjgq1c45n7qr0.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${externalKey_Source}/rows/';
+    const restUrl = `https://mc4by0xw84s11pznjgq1c45n7qr0.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${externalKey_Target}/rows/`;
+    
 
     const newFormData = formData;
-    // const finalFormData = {
-    //     "items": [{
-    //        "hcpId":"1234",
-    //        "marketCode" : "Jones",
-    //        "scenarioId": "23456",
-    //        "ID": "112",
-    //        "status": "Success",
-    //        "brandName": "Nike"
-    //     }]
-    //  };
-    const awsApiData = JSON.stringify(formData);
-    const awsApiOptions = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: awsApiData
-    };
+    
+    // const awsApiData = JSON.stringify(formData);
+    // const awsApiOptions = {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: awsApiData
+    // };
+    const AccessToken = ''
     const accessUrlOptions = {
         method: "POST",
         headers: {
+            'Authorization': `Bearer ${AccessToken}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
@@ -169,43 +145,52 @@ exports.execute = async function (req, res) {
             "account_id": "536005973"
         })
     }
-    await fetch(awsUrl, awsApiOptions)
+    await fetch(restUrl,accessUrlOptions)
     .then(data => data.json())
     .then(async (result) => {
-        console.log('aws api response', result);
-        console.log('aws api message is', result.Message);
-        console.log('aws api length is ', result.length);
-        newFormData["status"] = result.Message;
-        await fetch(accessUrl,accessUrlOptions)
-        .then(data => data.json())
-        .then(async (result) => {
-            console.log('acess token api response', result);
-            console.log('access token api response message is', result.access_token);
-            console.log('access token api length is ', result.length);
-            // newFormData["ID"]="112";
-            const apiData = {
-                "items":[newFormData]
-            }
-            console.log('final submitted data is ', apiData);
-            await fetch(restUrl,{
-                method: "POST",
-                headers: {
-                    'Authorization': `Bearer ${result.access_token}`,
-                    'Content-Type':'application/json'
-                },
-                // body: JSON.stringify(formData),
-                body: JSON.stringify(apiData)
-                // redirect: "follow"
-            })
-            .then(res => res.json())
-            .then(result => {
-                console.log('Final form data is ', JSON.stringify(finalFormData));
-                console.log('Final result is ', result);
-                console.log('Final result ID is ', result.requestId);
-                console.log('API Called Successfully');
-            });
-        })
-    });
+        console.log('Final result is ', result);
+
+    })
+
+   
+
+//    await fetch(accessUrl, awsApiOptions)
+//     .then(data => data.json())
+//     .then(async (result) => {
+//         console.log('aws api response', result);
+//         console.log('aws api message is', result.Message);
+//         console.log('aws api length is ', result.length);
+//         newFormData["status"] = result.Message;
+//         await fetch(accessUrl,accessUrlOptions)
+//         .then(data => data.json())
+//         .then(async (result) => {
+//             console.log('acess token api response', result);
+//             console.log('access token api response message is', result.access_token);
+//             console.log('access token api length is ', result.length);
+//             // newFormData["ID"]="112";
+//             const apiData = {
+//                 "items":[newFormData]
+//             }
+//             console.log('final submitted data is ', apiData);
+//             await fetch(restUrl,{
+//                 method: "POST",
+//                 headers: {
+//                     'Authorization': `Bearer ${result.access_token}`,
+//                     'Content-Type':'application/json'
+//                 },
+//                 // body: JSON.stringify(formData),
+//                 body: JSON.stringify(apiData)
+//                 // redirect: "follow"
+//             })
+//             .then(res => res.json())
+//             .then(result => {
+//                 console.log('Final form data is ', JSON.stringify(finalFormData));
+//                 console.log('Final result is ', result);
+//                 console.log('Final result ID is ', result.requestId);
+//                 console.log('API Called Successfully');
+//             });
+//         })
+//     });
     logData(req);
     res.send(200, 'Execute');
 };

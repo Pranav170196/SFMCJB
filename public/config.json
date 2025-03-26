@@ -8,8 +8,8 @@
     "type": "REST",
     "lang": {
         "en-US": {
-            "name": "Suggestion App",
-          "description": "A Template for a custom Journey Builder activity for Suggestion sending",
+            "name": "Dynamic DE Upsert Activity",
+          "description": "Upserts contact data into DE",
           "step1Label": "Configure Activity"
         }
     },
@@ -17,16 +17,16 @@
         "execute": {
            "inArguments":[
  {
-                    "hcpId": "{{Contact.Key}}",
-                    "brandName": "",
-                    "scenarioId": "",
-                    "marketCode": "",
-                    "deName":"",
-                    "ID":"{{Contact.Attribute.hcp_suggestion_de.ID}}"
+                    "ContactID": "{{Contact.Key}}",
+                    "FirstName": "",
+                    "LastName": "",
+                    "EmailAddress": ""
+                    
+                    
                 }
  ],
           "outArguments": [],
-          "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/journeybuilder/execute",
+          "url": "https://sfmcjb.vercel.app//journeybuilder/execute",
            "verb": "POST",
             "body": "",
             "header": "",
@@ -37,19 +37,19 @@
     "configurationArguments": {
       "applicationExtensionKey": "e83089ed-8936-4100-8473-125c712c9592",
       "save": {
-        "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/journeybuilder/save",
+        "url": "https://sfmcjb.vercel.app/journeybuilder/save",
           "verb": "POST"
        },
        "publish": {
-        "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/journeybuilder/publish",
+        "url": "https://sfmcjb.vercel.app/journeybuilder/publish",
            "verb": "POST"
        },
       "stop": {
-        "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/journeybuilder/stop",
+        "url": "https://sfmcjb.vercel.app/journeybuilder/stop",
            "verb": "POST"
       },
       "validate": {
-        "url": "https://az-sfmc-veeva-suggestions-dev-429a38bb05cc.herokuapp.com/journeybuilder/validate",
+        "url": "https://sfmcjb.vercel.app/journeybuilder/validate",
         "verb": "POST"
       }
     },
@@ -68,40 +68,34 @@
             "execute": {
               "inArguments": [
                 {
-                    "hcpId": {
-                        "dataType": "String",
+                    "ContactID": {
+                        "dataType": "Text",
                         "isNullable": false,
                         "direction": "out"  
                     }
                 },                    
                 {
-                    "brandName": {
-                        "dataType": "String",
-                        "isNullable": false,
+                    "FirstName": {
+                        "dataType": "Text",
+                        "isNullable": true,
                         "direction": "out"  
                     }
                 },                    
                 {
-                    "scenarioId": {
-                        "dataType": "String",
-                        "isNullable": false,
+                    "LastName": {
+                        "dataType": "Text",
+                        "isNullable": true,
                         "direction": "out"  
                     }
                 },                    
                 {
-                    "marketCode": {
+                    "EmailAddress": {
                         "dataType": "String",
-                        "isNullable": false,
-                        "direction": "out"
-                    }
-                },
-                {
-                    "deName": {
-                        "dataType": "String",
-                        "isNullable": false,
+                        "isNullable": true,
                         "direction": "out"
                     }
                 }
+                
             ],
                 "outArguments": []
             }

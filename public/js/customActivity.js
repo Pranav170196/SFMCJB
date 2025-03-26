@@ -9,7 +9,7 @@ define([
     var payload = {};
     var lastStepEnabled = false;
     var steps = [ // initialize to the same value as what's set in config.json for consistency
-        { "label": "Configure suggestion details for HCP", "key": "step1" }
+        { "label": "Configure Activity ", "key": "step1" }
     ];
     var currentStep = steps[0].key;
 
@@ -50,25 +50,23 @@ define([
         $.each(inArguments, function (index, inArgument) {
             $.each(inArgument, function (key, val) {
 
-                if (key === 'marketCode') {
-                    $('#marketCode').val(val);
+                if (key === 'ContactID') {
+                    $('#ContactID').val(val);
                 }
 
-                if (key === 'brandName') {
-                    $('#brandName').val(val);
+                if (key === 'FirstName') {
+                    $('#FirstName').val(val);
                 }
 
-                if (key === 'scenarioId') {
-                    $('#scenarioId').val(val);
+                if (key === 'LastName') {
+                    $('#LastName').val(val);
                 }
 
-                if (key === 'hcpId') {
-                    $('#hcpId').val(val);
+                if (key === 'EmailAddress') {
+                    $('#EmailAddress').val(val);
                 }
                 
-                if (key === 'deName') {
-                    $('#deName').val(val);
-                }
+                
 
             })
         });
@@ -94,18 +92,17 @@ define([
 
     function save() {
 
-        var marketCode = $('#marketCode').val();
-        var brandName = $('#brandName').val();
-        var scenarioId = $('#scenarioId').val();
-        var hcpId = $('#hcpId').val();
-        var deName = $('#deName').val();
+        var ContactID = $('#ContactID').val();
+        var FirstName = $('#FirstName').val();
+        var LastName = $('#LastName').val();
+        var EmailAddress = $('#EmailAddress').val();
+        
 
         payload['arguments'].execute.inArguments = [{
-            "marketCode": marketCode,
-            "brandName": brandName,
-            "scenarioId": scenarioId,
-            "deName":deName,
-            "hcpId": hcpId
+            "ContactID": ContactID,
+            "FirstName": FirstName,
+            "LastName": LastName,
+            "EmailAddress": EmailAddress
         }];
 
         payload['metaData'].isConfigured = true;
@@ -117,7 +114,3 @@ define([
 
 });
 
-// messageBody = hcpId
-// messagingService = scenarioId
-// accountSID = marketCode
-// authToken = brandName
