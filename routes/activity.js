@@ -5,7 +5,7 @@ var util = require('util');
 const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var http = require('https');
-const AccessToken = require('twilio/lib/jwt/AccessToken');
+//const AccessToken = require('twilio/lib/jwt/AccessToken');
 
 exports.logExecuteData = [];
 
@@ -117,7 +117,8 @@ exports.execute = async function (req, res) {
     const externalKey_Source = '1B634897-BB9A-4910-840A-437E00EFA081';
     const externalKey_Target = '8EE09EDD-22AE-4AD1-9290-E14B24175795';
 
-    const accessUrl = 'https://mc4by0xw84s11pznjgq1c45n7qr0.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${externalKey_Source}/rows/';
+    const accessUrl = 'https://mc4by0xw84s11pznjgq1c45n7qr0.auth.marketingcloudapis.com/v2/token';
+    const fetchUrl = 'https://mc4by0xw84s11pznjgq1c45n7qr0.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${externalKey_Source}/rows/';
     const restUrl = `https://mc4by0xw84s11pznjgq1c45n7qr0.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:${externalKey_Target}/rows/`;
     
 
@@ -131,26 +132,60 @@ exports.execute = async function (req, res) {
     //     },
     //     body: awsApiData
     // };
-    const AccessToken = ''
-    const accessUrlOptions = {
-        method: "POST",
-        headers: {
-            'Authorization': `Bearer ${AccessToken}`,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            "grant_type": "client_credentials",
-            "client_id": "nqet3pcyjiccxq9ly07jlt9t",
-            "client_secret": "exg1Fr6X8DMGMqctI7QUrwsE",
-            "account_id": "7236752"
+
+    
+
+    await fetch(accessUrl, accessUrlOptions)
+    .then(res => res.json())
+    .then(async data => {
+        const AccessToken = data.AccessToken
+        const accessUrlOptions = {
+            method: "POST",
+            headers: {
+                'Authorization': `Bearer ${AccessToken}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "grant_type": "client_credentials",
+                "client_id": "nqet3pcyjiccxq9ly07jlt9t",
+                "client_secret": "exg1Fr6X8DMGMqctI7QUrwsE",
+                "account_id": "7236752"
+            })
+        }
+        await fetch(fetchUrl, fetchUrlOptions)
+        .then(data => data.json())
+        .then(async res => {
+            const ApiData = JSON.stringify(formData);
+            const fetchUrlOptions = {
+                method: "GET",
+                headers: {
+                    'Authorization': `Bearer ${AccessToken}`,
+                },
+                body: ApiData
+                
+               
+            }
+            await fetch(restUrl,{
+                method: "POST",
+                headers: {
+                    'Authorization': `Bearer ${AccessToken}`,
+                    'Content-Type':'application/json'
+                },
+                
+                body: JSON.stringify(formData)
+                
+            })
+            .then(res => res.json())
+            
+
         })
-    }
-    await fetch(restUrl,accessUrlOptions)
-    .then(data => data.json())
-    .then(async (result) => {
-        console.log('Final result is ', result);
+
+
+
+
 
     })
+    
 
    
 
