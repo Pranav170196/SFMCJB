@@ -147,8 +147,8 @@ exports.execute = async function (req, res) {
             },
             body: JSON.stringify({
                 "grant_type": "client_credentials",
-                "client_id": "nqet3pcyjiccxq9ly07jlt9t",
-                "client_secret": "exg1Fr6X8DMGMqctI7QUrwsE",
+                "client_id": "7svddz3sf4jllv40lqnffolh",
+                "client_secret": "ZfxbkAqcrbMnrXXBKyqIT08H",
                 "account_id": "7236752"
             })
         }
@@ -187,45 +187,6 @@ exports.execute = async function (req, res) {
     })
     
 
-   
-
-//    await fetch(accessUrl, awsApiOptions)
-//     .then(data => data.json())
-//     .then(async (result) => {
-//         console.log('aws api response', result);
-//         console.log('aws api message is', result.Message);
-//         console.log('aws api length is ', result.length);
-//         newFormData["status"] = result.Message;
-//         await fetch(accessUrl,accessUrlOptions)
-//         .then(data => data.json())
-//         .then(async (result) => {
-//             console.log('acess token api response', result);
-//             console.log('access token api response message is', result.access_token);
-//             console.log('access token api length is ', result.length);
-//             // newFormData["ID"]="112";
-//             const apiData = {
-//                 "items":[newFormData]
-//             }
-//             console.log('final submitted data is ', apiData);
-//             await fetch(restUrl,{
-//                 method: "POST",
-//                 headers: {
-//                     'Authorization': `Bearer ${result.access_token}`,
-//                     'Content-Type':'application/json'
-//                 },
-//                 // body: JSON.stringify(formData),
-//                 body: JSON.stringify(apiData)
-//                 // redirect: "follow"
-//             })
-//             .then(res => res.json())
-//             .then(result => {
-//                 console.log('Final form data is ', JSON.stringify(finalFormData));
-//                 console.log('Final result is ', result);
-//                 console.log('Final result ID is ', result.requestId);
-//                 console.log('API Called Successfully');
-//             });
-//         })
-//     });
     logData(req);
     res.send(200, 'Execute');
 };

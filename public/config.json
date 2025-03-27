@@ -35,7 +35,7 @@
         }
     },
     "configurationArguments": {
-      "applicationExtensionKey": "e83089ed-8936-4100-8473-125c712c9592",
+      "applicationExtensionKey": "2e87350a-07df-4b2a-ad0a-43d385ec6941",
       "save": {
         "url": "https://sfmcjb.vercel.app/journeybuilder/save",
           "verb": "POST"
@@ -69,29 +69,29 @@
               "inArguments": [
                 {
                     "ContactID": {
-                        "dataType": "Text",
+                        "dataType": "String",
                         "isNullable": false,
                         "direction": "out"  
                     }
                 },                    
                 {
                     "FirstName": {
-                        "dataType": "Text",
-                        "isNullable": true,
+                        "dataType": "String",
+                        "isNullable": false,
                         "direction": "out"  
                     }
                 },                    
                 {
                     "LastName": {
-                        "dataType": "Text",
-                        "isNullable": true,
+                        "dataType": "String",
+                        "isNullable": false,
                         "direction": "out"  
                     }
                 },                    
                 {
                     "EmailAddress": {
                         "dataType": "String",
-                        "isNullable": true,
+                        "isNullable": false,
                         "direction": "out"
                     }
                 }
