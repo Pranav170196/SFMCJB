@@ -26,7 +26,7 @@
                 }
  ],
           "outArguments": [],
-          "url": "https://sfmcjb-pranavs-projects-1a98a0d6.vercel.app/public/execute",
+          "url": "https://sfmcjb.vercel.app/public/execute",
            "verb": "POST",
             "body": "",
             "header": "",
@@ -37,19 +37,19 @@
     "configurationArguments": {
       "applicationExtensionKey": "2e87350a-07df-4b2a-ad0a-43d385ec6941",
       "save": {
-        "url": "https://sfmcjb-pranavs-projects-1a98a0d6.vercel.app/public/save",
+        "url": "https://sfmcjb.vercel.app/public/save","useJwt": true,
           "verb": "POST"
        },
        "publish": {
-        "url": "https://sfmcjb-pranavs-projects-1a98a0d6.vercel.app/public/publish",
+        "url": "https://sfmcjb.vercel.app/public/publish","useJwt": true,
            "verb": "POST"
        },
       "stop": {
-        "url": "https://sfmcjb-pranavs-projects-1a98a0d6.vercel.app/public/stop",
+        "url": "https://sfmcjb.vercel.app/public/stop","useJwt": true,
            "verb": "POST"
       },
       "validate": {
-        "url": "https://sfmcjb-pranavs-projects-1a98a0d6.vercel.app/public/validate",
+        "url": "https://sfmcjb.vercel.app/public/validate","useJwt": true,
         "verb": "POST"
       }
     },
