@@ -1,8 +1,8 @@
 {
     "workflowApiVersion": "1.1",
     "metaData": {
-        "icon": "images/Chanel.png",
-        "iconSmall": "images/Chanel Small logo.png",
+        "icon": "images/chanelicon.png",
+        "iconSmall": "images/Chanelsmall.png",
         "category": "message"
     },
     "type": "REST",
