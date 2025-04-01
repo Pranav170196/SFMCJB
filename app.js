@@ -39,11 +39,11 @@ app.post('/logout', routes.logout );
 // app.post('/journeybuilder/publish/', activity.publish );
 // app.post('/journeybuilder/execute/', activity.execute );
 
-app.post('/save/',activity.save);
-app.post('/validate/', activity.validate);
-app.post('/publish/', activity.publish);
-app.post('/execute/', activity.execute); 
-app.post('/stop/', activity.stop); 
+app.post('/journeybuilder/save/',activity.save);
+app.post('/journeybuilder/validate/', activity.validate);
+app.post('/journeybuilder/publish/', activity.publish);
+app.post('/journeybuilder/execute/', activity.execute); 
+app.post('/journeybuilder/stop/', activity.stop); 
 
 
 http.createServer(app).listen(app.get('port'), function(){
