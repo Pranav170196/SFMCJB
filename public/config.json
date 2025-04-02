@@ -71,28 +71,28 @@
                     "ContactID": {
                         "dataType": "String",
                         "isNullable": false,
-                        "direction": "out"  
+                        "direction": "in"  
                     }
                 },                    
                 {
                     "FirstName": {
                         "dataType": "String",
                         "isNullable": false,
-                        "direction": "out"  
+                        "direction": "in"  
                     }
                 },                    
                 {
                     "LastName": {
                         "dataType": "String",
                         "isNullable": false,
-                        "direction": "out"  
+                        "direction": "in"  
                     }
                 },                    
                 {
                     "EmailAddress": {
                         "dataType": "String",
                         "isNullable": false,
-                        "direction": "out"
+                        "direction": "in"
                     }
                 }
                 
