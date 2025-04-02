@@ -382,11 +382,11 @@ exports.validate = function (req, res) {
     console.log("3");	
     console.log("2");	
     console.log("1");	
-    console.log("Validated: "+req.body.inArguments[0]);       
+    //console.log("Validated: "+req.body.inArguments[0]);       
     
      //Data from the req and put it in an array accessible to the main app.
-    console.log( req.body );
-    logData(req);
+    //console.log( req.body );
+    //logData(req);
     res.send(200, 'Validate');
 };
 exports.stop = function (req, res) {
