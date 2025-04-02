@@ -26,7 +26,7 @@
                 }
  ],
           "outArguments": [],
-          "url": "https://sfmcjb.vercel.app/public/journeybuilder/execute",
+          "url": "https://sfmcjb.vercel.app/public/journeybuilder/execute","useJwt": false, 
            "verb": "POST",
             "body": "",
             "header": "",
@@ -37,19 +37,19 @@
     "configurationArguments": {
       "applicationExtensionKey": "2e87350a-07df-4b2a-ad0a-43d385ec6941",
       "save": {
-        "url": "https://sfmcjb.vercel.app/public/journeybuilder/save","useJwt": true,
+        "url": "https://sfmcjb.vercel.app/public/journeybuilder/save","useJwt": false,
           "verb": "POST"
        },
        "publish": {
-        "url": "https://sfmcjb.vercel.app/public/journeybuilder/publish","useJwt": true,
+        "url": "https://sfmcjb.vercel.app/public/journeybuilder/publish","useJwt": false,
            "verb": "POST"
        },
       "stop": {
-        "url": "https://sfmcjb.vercel.app/public/journeybuilder/stop","useJwt": true,
+        "url": "https://sfmcjb.vercel.app/public/journeybuilder/stop","useJwt": false,
            "verb": "POST"
       },
       "validate": {
-        "url": "https://sfmcjb.vercel.app/public/journeybuilder/validate","useJwt": true,
+        "url": "https://sfmcjb.vercel.app/public/journeybuilder/validate","useJwt": false,
         "verb": "POST"
       }
     },
