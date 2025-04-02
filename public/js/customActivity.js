@@ -92,14 +92,14 @@ define([
 
     function save() {
 
-        var ContactID = $('#ContactID').val();
+       // var ContactID = $('#ContactID').val();
         var FirstName = $('#FirstName').val();
         var LastName = $('#LastName').val();
         var EmailAddress = $('#EmailAddress').val();
         
 
         payload['arguments'].execute.inArguments = [{
-            "ContactID": ContactID,
+            "ContactID": "{{Contact.Key}}",
             "FirstName": FirstName,
             "LastName": LastName,
             "EmailAddress": EmailAddress
